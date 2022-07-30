@@ -9,6 +9,7 @@
 - category/type (i.e. location, verb, adverb, pronoun, article)
 - flag for exclusion of proper nouns life names and locations if desired
 - origin (i.e. latin, greek, etc.)
+- number of words
 
 ## general rules for the word db
 - no acronyms with few exceptions (ie. scuba and laser are ok)
