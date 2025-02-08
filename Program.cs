@@ -15,6 +15,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles(); // Pfdfc
+app.UseDefaultFiles(); // P012c
 
 var words = new[]
 {
