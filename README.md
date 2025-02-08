@@ -19,3 +19,24 @@
 - grey area words that we need to think of rules for:
   - tijuana
   - ...
+
+## Usage
+
+To use the word bank generator, make a GET request to the `/wordbank` endpoint with the desired query parameters. The available query parameters are:
+
+- `startsWith`: Filter words that start with the specified letter or substring.
+- `length`: Filter words by their exact length.
+- `isPlural`: Filter words based on whether they are plural or not (true/false).
+- `contains`: Filter words that contain the specified letter or substring.
+- `category`: Filter words by their category/type (e.g., location, verb, adverb, pronoun, article).
+- `excludeProperNouns`: Exclude proper nouns like names and locations if set to true.
+- `origin`: Filter words by their origin (e.g., Latin, Greek, etc.).
+- `numberOfWords`: Limit the number of words returned.
+
+Example request:
+
+```
+GET /wordbank?startsWith=a&length=5&isPlural=false&contains=e&category=fruit&excludeProperNouns=true&origin=latin&numberOfWords=10
+```
+
+This request will return up to 10 words that start with "a", have a length of 5 characters, are not plural, contain the letter "e", belong to the category "fruit", exclude proper nouns, and have a Latin origin.
