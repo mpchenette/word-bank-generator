@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Bank Generator</title>
+</head>
+<body>
+    <h1>Word Bank Generator</h1>
+    <form id="wordBankForm">
+        <label for="startsWith">Starts With:</label>
+        <input type="text" id="startsWith" name="startsWith"><br><br>
+
+        <label for="length">Length:</label>
+        <input type="number" id="length" name="length"><br><br>
+
+        <label for="isPlural">Is Plural:</label>
+        <input type="checkbox" id="isPlural" name="isPlural"><br><br>
+
+        <label for="contains">Contains:</label>
+        <input type="text" id="contains" name="contains"><br><br>
+
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category"><br><br>
+
+        <label for="excludeProperNouns">Exclude Proper Nouns:</label>
+        <input type="checkbox" id="excludeProperNouns" name="excludeProperNouns"><br><br>
+
+        <label for="origin">Origin:</label>
+        <input type="text" id="origin" name="origin"><br><br>
+
+        <label for="numberOfWords">Number of Words:</label>
+        <input type="number" id="numberOfWords" name="numberOfWords"><br><br>
+
+        <button type="submit">Generate Word Bank</button>
+    </form>
+
+    <h2>Generated Word Bank</h2>
+    <div id="wordBankResult"></div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
