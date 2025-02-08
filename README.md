@@ -40,3 +40,32 @@ GET /wordbank?startsWith=a&length=5&isPlural=false&contains=e&category=fruit&exc
 ```
 
 This request will return up to 10 words that start with "a", have a length of 5 characters, are not plural, contain the letter "e", belong to the category "fruit", exclude proper nouns, and have a Latin origin.
+
+## Running the app locally
+
+To run the app locally for testing, follow these steps:
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/mpchenette/word-bank-generator.git
+   ```
+
+2. Navigate to the project directory:
+   ```
+   cd word-bank-generator
+   ```
+
+3. Restore dependencies:
+   ```
+   dotnet restore
+   ```
+
+4. Build the project:
+   ```
+   dotnet build
+   ```
+
+5. Run the project:
+   ```
+   dotnet run
+   ```
