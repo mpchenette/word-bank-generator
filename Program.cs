@@ -15,29 +15,60 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles(); // Pfdfc
+app.UseDefaultFiles(); // P012c
 
-var summaries = new[]
+var words = new[]
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+    "apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon"
 };
 
-app.MapGet("/weatherforecast", () =>
+app.MapGet("/wordbank", (string? startsWith, int? length, bool? isPlural, string? contains, string? category, bool? excludeProperNouns, string? origin, int? numberOfWords) =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateTime.Now.AddDays(index),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
+    var filteredWords = words.AsEnumerable();
+
+    if (!string.IsNullOrEmpty(startsWith))
+    {
+        filteredWords = filteredWords.Where(word => word.StartsWith(startsWith, StringComparison.OrdinalIgnoreCase));
+    }
+
+    if (length.HasValue)
+    {
+        filteredWords = filteredWords.Where(word => word.Length == length.Value);
+    }
+
+    if (isPlural.HasValue)
+    {
+        filteredWords = filteredWords.Where(word => isPlural.Value ? word.EndsWith("s") : !word.EndsWith("s"));
+    }
+
+    if (!string.IsNullOrEmpty(contains))
+    {
+        filteredWords = filteredWords.Where(word => word.Contains(contains, StringComparison.OrdinalIgnoreCase));
+    }
+
+    if (!string.IsNullOrEmpty(category))
+    {
+        // Implement category filtering logic here
+    }
+
+    if (excludeProperNouns.HasValue && excludeProperNouns.Value)
+    {
+        // Implement proper noun exclusion logic here
+    }
+
+    if (!string.IsNullOrEmpty(origin))
+    {
+        // Implement origin filtering logic here
+    }
+
+    if (numberOfWords.HasValue)
+    {
+        filteredWords = filteredWords.Take(numberOfWords.Value);
+    }
+
+    return filteredWords.ToArray();
 })
-.WithName("GetWeatherForecast");
+.WithName("GetWordBank");
 
 app.Run();
-
-record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
